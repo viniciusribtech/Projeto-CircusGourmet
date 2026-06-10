@@ -3,7 +3,7 @@ CREATE DATABASE buffet_eventos;
 USE buffet_eventos;
 
 
-/* Lógico_1(Corrijido): */
+/* Lógico_1(Corrigido): */
 
 CREATE TABLE Cliente (
     id_cliente INTEGER AUTO_INCREMENT PRIMARY KEY,
