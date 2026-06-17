@@ -225,19 +225,20 @@ VALUES
 INSERT INTO Servico (
 nome,
 descricao,
+preco_base,
 fk_Categoria_id_categoria
 )
 VALUES
-('Bar de Drinks', 'Drinks alcoólicos e não alcoólicos', 1),
-('Coffee Break Executivo', 'Coffee break para empresas', 5),
-('Açaí Premium', 'Estação completa de açaí', 2),
-('Sorvete Tropical', 'Ilha de sorvetes', 2),
-('Churros Fest', 'Churros recheados', 2),
-('Hambúrguer Artesanal', 'Mini hambúrguer gourmet', 3),
-('Pizza Express', 'Rodízio de pizza', 3),
-('Crepe Gourmet', 'Crepes doces e salgados', 3),
-('Algodão Doce Kids', 'Algodão doce colorido', 4),
-('Pipoca Gourmet', 'Pipocas especiais', 4);
+('Bar de Drinks', 'Drinks alcoólicos e não alcoólicos', 15.00, 1),
+('Coffee Break Executivo', 'Coffee break para empresas', 18.00, 5),
+('Açaí Premium', 'Estação completa de açaí', 20.00, 2),
+('Sorvete Tropical', 'Ilha de sorvetes', 25.00, 2),
+('Churros Fest', 'Churros recheados', 30.00, 2),
+('Hambúrguer Artesanal', 'Mini hambúrguer gourmet', 22.00, 3),
+('Pizza Express', 'Rodízio de pizza', 28.00, 3),
+('Crepe Gourmet', 'Crepes doces e salgados', 18.00, 3),
+('Algodão Doce Kids', 'Algodão doce colorido', 10.00, 4),
+('Pipoca Gourmet', 'Pipocas especiais', 12.00, 4);
 
 /* =========================
    PRECO_CONVIDADO
