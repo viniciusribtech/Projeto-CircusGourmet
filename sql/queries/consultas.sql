@@ -3,22 +3,28 @@
   ==========================================*/
 
 /*1. Liste os eventos que ainda não pagaram o sinal (taxa de agendamento), mas a data está a menos de 10 dias de distância.*/
-SELECT data_evento
-FROM Evento
-WHERE status = 'Pendente'
-AND data_evento BETWEEN CURDATE() 
-                      AND DATE_ADD(CURDATE(), INTERVAL 10 DAY);
+SELECT
+    E.id_evento,
+    E.data_evento,
+    DATEDIFF(E.data_evento, CURDATE()) AS dias_restantes,
+    E.local,
+    O.sinal_pagamento
+FROM Evento E
+JOIN Orcamento O
+    ON E.id_evento = O.fk_Evento_id_evento
+WHERE O.sinal_pagamento = 0
+  AND E.data_evento BETWEEN CURDATE()
+                       AND DATE_ADD(CURDATE(), INTERVAL 10 DAY);
 
 /*2. Quais cidades concentram o maior volume de eventos contratados para os próximos 30 dias?*/
-SELECT C.id_cidade, COUNT(E.id_evento) AS total_eventos
+SELECT C.id_cidade, C.nome, COUNT(E.id_evento) AS total_eventos
 FROM Cidade C
 JOIN Evento E
 ON C.id_cidade = E.fk_Cidade_id_cidade
 WHERE E.data_evento BETWEEN CURDATE()
                         AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)
 GROUP BY C.id_cidade
-ORDER BY total_eventos DESC
-LIMIT 3;
+ORDER BY total_eventos DESC;
 
 /*3. Qual o volume total de orçamentos gerados para eventos com o status de “cancelado”?*/
 SELECT SUM(O.valor_total) AS TotalOrcamentosCancelados
@@ -28,9 +34,11 @@ ON E.id_evento = O.fk_Evento_id_evento
 WHERE E.status = 'Cancelado';
 
 /*4. Dos tipos de serviços oferecidos, quais estiveram presentes em mais de 70% dos eventos realizados no ano, sendo os ‘carros-chefes’ da empresa? */
-SELECT ES.FK_Servico_id_servico,
+SELECT ES.FK_Servico_id_servico, S.nome,
        COUNT(DISTINCT ES.FK_Evento_id_evento) AS eventos_com_servico
 FROM EVENTO_SERVICO ES
+JOIN Servico S
+ON ES.FK_Servico_id_servico = S.id_servico
 JOIN Evento E
 ON ES.FK_Evento_id_evento = E.id_evento
 WHERE YEAR(E.data_evento) = 2026
@@ -56,4 +64,5 @@ JOIN Evento E
 ON ES.FK_Evento_id_evento = E.id_evento
 WHERE E.data_evento >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
 GROUP BY P.id_produto, P.nome
-ORDER BY total_solicitado DESC;
+ORDER BY total_solicitado DESC
+LIMIT 3;
