@@ -96,7 +96,7 @@ CREATE TABLE EVENTO_SERVICO (
 CREATE TABLE SERVICO_PRODUTO (
     FK_Produto_id_produto INTEGER,
     FK_Servico_id_servico INTEGER ,
-    quantidade_insumo SMALLINT UNSIGNED NOT NULL,
+    quantidade_produto SMALLINT UNSIGNED NOT NULL,
     custo_unitario DECIMAL(4,2) UNSIGNED NOT NULL,
     PRIMARY KEY (FK_Servico_id_servico, FK_Produto_id_produto)
 );
@@ -409,51 +409,32 @@ VALUES
 INSERT INTO SERVICO_PRODUTO (
 FK_Produto_id_produto,
 FK_Servico_id_servico,
-quantidade_insumo,
+quantidade_produto,
 custo_unitario
 )
 VALUES
--- Bar de Drinks
-(4, 1, 5, 40.00),      -- Vodka
-(7, 1, 20, 3.50),      -- Refrigerante
-
--- Coffee Break Executivo
-(10, 2, 15, 1.50),     -- Café
-(5, 2, 10, 2.00),      -- Leite
-
--- Açaí Premium
-(2, 3, 50, 1.50),      -- Granola
-(3, 3, 40, 2.50),      -- Morango
-(1, 3, 20, 4.00),      -- Leite Condensado
-
--- Sorvete Tropical
-(6, 4, 25, 2.50),      -- Chocolate
-(3, 4, 20, 2.50),      -- Morango
-(1, 4, 15, 4.00),      -- Leite Condensado
-
--- Churros Fest
-(6, 5, 20, 2.50),      -- Chocolate
-(1, 5, 30, 4.00),      -- Leite Condensado
-
--- Hambúrguer Artesanal
-(8, 6, 30, 3.00),      -- Queijo
-(9, 6, 30, 2.50),      -- Presunto
-
--- Pizza Express
-(8, 7, 40, 3.00),      -- Queijo
-(9, 7, 35, 2.50),      -- Presunto
-
--- Crepe Gourmet
-(6, 8, 15, 2.50),      -- Chocolate
-(8, 8, 20, 3.00),      -- Queijo
-(9, 8, 15, 2.50),      -- Presunto
-
--- Algodão Doce Kids
-(11, 9, 25, 1.00),     -- açucar
-
--- Pipoca Gourmet
-(1, 10, 15, 4.00),     -- Leite Condensado
-(6, 10, 10, 2.50);     -- Chocolate
+(4, 1, 5, 40.00),      
+(7, 1, 20, 3.50),     
+(10, 2, 15, 1.50),     
+(5, 2, 10, 2.00),      
+(2, 3, 50, 1.50),      
+(3, 3, 40, 2.50),      
+(1, 3, 20, 4.00),      
+(6, 4, 25, 2.50),      
+(3, 4, 20, 2.50),      
+(1, 4, 15, 4.00),      
+(6, 5, 20, 2.50),      
+(1, 5, 30, 4.00),     
+(8, 6, 30, 3.00),    
+(9, 6, 30, 2.50),     
+(8, 7, 40, 3.00),   
+(9, 7, 35, 2.50),      
+(6, 8, 15, 2.50),      
+(8, 8, 20, 3.00),      
+(9, 8, 15, 2.50),      
+(11, 9, 25, 1.00), 
+(1, 10, 15, 4.00),    
+(6, 10, 10, 2.50);     
 
 
 /* =========================
