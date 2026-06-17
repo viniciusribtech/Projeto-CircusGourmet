@@ -104,7 +104,7 @@ CREATE TABLE SERVICO_PRODUTO (
 CREATE TABLE EVENTO_TERCEIRIZADO (
     FK_Terceirizado_id_terceirizado INTEGER,
     FK_Evento_id_evento INTEGER,
-    Custo_mao_de_obra DECIMAL(4,2) UNSIGNED NOT NULL,
+    Custo_mao_de_obra DECIMAL(5,2) UNSIGNED NOT NULL,
     PRIMARY KEY (FK_Terceirizado_id_terceirizado, FK_Evento_id_evento)
 );
  
@@ -275,7 +275,8 @@ VALUES
 ('Refrigerante'),
 ('Queijo'),
 ('Presunto'),
-('Café');
+('Café'),
+('Acucar');
 
 /* =========================
    CARRINHO
@@ -334,9 +335,9 @@ VALUES
 ('2026-04-11', '16:00:00', 'Área Vip', 'Cancelado', 60, '21:00:00', 5, 5),
 ('2026-05-01', '20:00:00', 'Casa de Eventos', 'Confirmado', 200, '02:00:00', 6, 6),
 ('2026-05-15', '15:00:00', 'Espaço Kids', 'Pendente', 70, '20:00:00', 7, 7),
-('2026-04-17', '19:30:00', 'Salão Ouro', 'Pendente', 110, '00:30:00', 8, 8),
+('2026-04-17', '19:30:00', 'Salão Ouro', 'Cancelado', 110, '00:30:00', 8, 8),
 ('2026-03-20', '18:00:00', 'Fazenda Bela Vista', 'Cancelado', 180, '01:00:00', 9, 9),
-('2026-06-15', '21:00:00', 'Clube Central', 'Cancelado', 250, '05:00:00', 10, 10);
+('2026-06-15', '21:00:00', 'Clube Central', 'Confirmado', 250, '05:00:00', 10, 10);
 
 /* =========================
    ORCAMENTO
@@ -351,14 +352,14 @@ fk_Evento_id_evento
 VALUES
 (3000.00, 200.00, 2800.00, 1000.00, 1),
 (2500.00, 100.00, 2400.00, 800.00, 2),
-(5000.00, 500.00, 4500.00, 1500.00, 3),
+(5000.00, 500.00, 4500.00, 0, 3),
 (3500.00, 0, 3500.00, 1000.00, 4),
 (2000.00, 150.00, 1850.00, 700.00, 5),
 (7000.00, 700.00, 6300.00, 2500.00, 6),
 (2800.00, 200.00, 2600.00, 900.00, 7),
 (4200.00, 350.00, 3850.00, 1200.00, 8),
 (6500.00, 500.00, 6000.00, 2000.00, 9),
-(9000.00, 1000.00, 8000.00, 3000.00, 10);
+(9000.00, 100.00, 8000.00, 3000.00, 10);
 
 /* =========================
    EVENTO_CARRINHO
@@ -412,11 +413,48 @@ quantidade_insumo,
 custo_unitario
 )
 VALUES
-(4, 1, 5, 40.00),
-(7, 1, 20, 3.50),
-(2, 3, 50, 1.50),
-(3, 3, 40, 2.50),
-(1, 10, 15, 4.00);
+-- Bar de Drinks
+(4, 1, 5, 40.00),      -- Vodka
+(7, 1, 20, 3.50),      -- Refrigerante
+
+-- Coffee Break Executivo
+(10, 2, 15, 1.50),     -- Café
+(5, 2, 10, 2.00),      -- Leite
+
+-- Açaí Premium
+(2, 3, 50, 1.50),      -- Granola
+(3, 3, 40, 2.50),      -- Morango
+(1, 3, 20, 4.00),      -- Leite Condensado
+
+-- Sorvete Tropical
+(6, 4, 25, 2.50),      -- Chocolate
+(3, 4, 20, 2.50),      -- Morango
+(1, 4, 15, 4.00),      -- Leite Condensado
+
+-- Churros Fest
+(6, 5, 20, 2.50),      -- Chocolate
+(1, 5, 30, 4.00),      -- Leite Condensado
+
+-- Hambúrguer Artesanal
+(8, 6, 30, 3.00),      -- Queijo
+(9, 6, 30, 2.50),      -- Presunto
+
+-- Pizza Express
+(8, 7, 40, 3.00),      -- Queijo
+(9, 7, 35, 2.50),      -- Presunto
+
+-- Crepe Gourmet
+(6, 8, 15, 2.50),      -- Chocolate
+(8, 8, 20, 3.00),      -- Queijo
+(9, 8, 15, 2.50),      -- Presunto
+
+-- Algodão Doce Kids
+(11, 9, 25, 1.00),     -- açucar
+
+-- Pipoca Gourmet
+(1, 10, 15, 4.00),     -- Leite Condensado
+(6, 10, 10, 2.50);     -- Chocolate
+
 
 /* =========================
    EVENTO_TERCEIRIZADO
@@ -429,10 +467,10 @@ VALUES
 
 (1,2,300.00),
 (2,2,250.00),
-(3,4,500.00),
-(4,6,700.00),
-(5,6,600.00),
-(6,6,550.00),
+(3,4,300.00),
+(4,6,150.00),
+(5,6,200.00),
+(6,6,400.00),
 (7,8,450.00),
-(8,10,600.00),
-(9,10,500.00);
+(8,10,200.00),
+(9,10,150.00);
