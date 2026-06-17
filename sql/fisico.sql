@@ -389,6 +389,7 @@ INSERT INTO EVENTO_SERVICO
 (FK_Servico_id_servico, FK_Evento_id_evento,
 quantidade, preco_praticado)
 VALUES
+
 (1, 1, 1, 15.00),
 (1, 2, 1, 12.00),
 (1, 3, 1, 15.00),
