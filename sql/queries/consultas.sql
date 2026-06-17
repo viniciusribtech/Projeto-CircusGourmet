@@ -18,7 +18,7 @@ WHERE E.data_evento BETWEEN CURDATE()
                         AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)
 GROUP BY C.id_cidade
 ORDER BY total_eventos DESC
-LIMIT 1;
+LIMIT 3;
 
 /*3. Qual o volume total de orçamentos gerados para eventos com o status de “cancelado”?*/
 SELECT SUM(O.valor_total) AS TotalOrcamentosCancelados
