@@ -52,7 +52,7 @@ HAVING COUNT(DISTINCT ES.FK_Evento_id_evento) > (
 /*5.  Quais produtos (ex: Açaí vs Pipoca) foram os mais solicitados nos últimos 6 meses?*/
 SELECT P.id_produto,
        P.nome,
-       SUM(SP.quantidade_insumo) AS total_solicitado
+       SUM(SP.quantidade_produto) AS total_solicitado
 FROM Produto P
 JOIN SERVICO_PRODUTO SP
 ON P.id_produto = SP.FK_Produto_id_produto
